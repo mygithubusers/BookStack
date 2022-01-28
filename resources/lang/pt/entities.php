@@ -99,7 +99,7 @@ return [
     'shelves_permissions' => 'Permissões da Estante',
     'shelves_permissions_updated' => 'Permissões da Estante de Livros Atualizada',
     'shelves_permissions_active' => 'Permissões da Estante de Livros Ativas',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'As permissões nas estantes não são passadas automaticamente em efeito dominó para os livros contidos. Isto acontece porque um livro pode existir em várias prateleiras. As permissões podem, no entanto, ser copiadas para livros filhos usando a opção encontrada abaixo.',
     'shelves_copy_permissions_to_books' => 'Copiar Permissões para Livros',
     'shelves_copy_permissions' => 'Copiar Permissões',
     'shelves_copy_permissions_explain' => 'Isto aplicará as configurações de permissões atuais desta estante a todos os livros nela contidos. Antes de ativar, assegure-se de que quaisquer alterações nas permissões desta estante foram guardadas.',
@@ -143,6 +143,8 @@ return [
     'books_sort_chapters_last' => 'Capítulos por Último',
     'books_sort_show_other' => 'Mostrar Outros Livros',
     'books_sort_save' => 'Guardar Nova Ordenação',
+    'books_copy' => 'Copy Book',
+    'books_copy_success' => 'Book successfully copied',
 
     // Chapters
     'chapter' => 'Capítulo',
@@ -161,6 +163,8 @@ return [
     'chapters_move' => 'Mover Capítulo',
     'chapters_move_named' => 'Mover Capítulo :chapterName',
     'chapter_move_success' => 'Capítulo movido para :bookName',
+    'chapters_copy' => 'Copy Chapter',
+    'chapters_copy_success' => 'Chapter successfully copied',
     'chapters_permissions' => 'Permissões do Capítulo',
     'chapters_empty' => 'Nenhuma página existente neste capítulo.',
     'chapters_permissions_active' => 'Permissões de Capítulo Ativas',
@@ -234,6 +238,7 @@ return [
     'pages_initial_name' => 'Nova Página',
     'pages_editing_draft_notification' => 'Você está atualmente a editar um rascunho que foi guardado pela última vez a :timeDiff.',
     'pages_draft_edited_notification' => 'Esta página entretanto já foi atualizada. É recomendado que você descarte este rascunho.',
+    'pages_draft_page_changed_since_creation' => 'Esta página foi atualizada desde que este rascunho foi criado. É recomendável que descarte este rascunho ou tenha cuidado para não sobrescrever nenhuma alteração de página.',
     'pages_draft_edit_active' => [
         'start_a' => ':count usuários iniciaram a edição dessa página',
         'start_b' => ':userName iniciou a edição desta página',
@@ -257,6 +262,16 @@ return [
     'tags_explain' => "Adicione algumas etiquetas para melhor categorizar o seu conteúdo. \n Você poderá atribuir valores às etiquetas para uma organização mais complexa.",
     'tags_add' => 'Adicionar outra etiqueta',
     'tags_remove' => 'Remover esta etiqueta',
+    'tags_usages' => 'Total de marcadores usados',
+    'tags_assigned_pages' => 'Atribuído às páginas',
+    'tags_assigned_chapters' => 'Atribuído aos Capítulos',
+    'tags_assigned_books' => 'Atribuído a Livros',
+    'tags_assigned_shelves' => 'Atribuído a Prateleiras',
+    'tags_x_unique_values' => ':count valores únicos',
+    'tags_all_values' => 'Todos os valores',
+    'tags_view_tags' => 'Ver Marcadores',
+    'tags_view_existing_tags' => 'Ver marcadores existentes',
+    'tags_list_empty_hint' => 'Tags can be assigned via the page editor sidebar or while editing the details of a book, chapter or shelf.',
     'attachments' => 'Anexos',
     'attachments_explain' => 'Carregue alguns arquivos ou anexe links para serem exibidos na sua página. Eles estarão visíveis na barra lateral à direita.',
     'attachments_explain_instant_save' => 'As mudanças são guardadas instantaneamente.',
@@ -320,5 +335,13 @@ return [
     'revision_delete_confirm' => 'Tem a certeza de que deseja eliminar esta revisão?',
     'revision_restore_confirm' => 'Tem a certeza que deseja restaurar esta revisão? O conteúdo atual da página será substituído.',
     'revision_delete_success' => 'Revisão excluída',
-    'revision_cannot_delete_latest' => 'Não é possível eliminar a revisão mais recente.'
+    'revision_cannot_delete_latest' => 'Não é possível eliminar a revisão mais recente.',
+
+    // Copy view
+    'copy_consider' => 'Please consider the below when copying content.',
+    'copy_consider_permissions' => 'Custom permission settings will not be copied.',
+    'copy_consider_owner' => 'You will become the owner of all copied content.',
+    'copy_consider_images' => 'Page image files will not be duplicated & the original images will retain their relation to the page they were originally uploaded to.',
+    'copy_consider_attachments' => 'Page attachments will not be copied.',
+    'copy_consider_access' => 'A change of location, owner or permissions may result in this content being accessible to those previously without access.',
 ];

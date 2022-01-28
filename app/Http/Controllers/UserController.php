@@ -12,7 +12,9 @@ use BookStack\Exceptions\UserUpdateException;
 use BookStack\Uploads\ImageRepo;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
+use Illuminate\Validation\Rules\Password;
 use Illuminate\Validation\ValidationException;
 
 class UserController extends Controller
@@ -74,18 +76,18 @@ class UserController extends Controller
     {
         $this->checkPermission('users-manage');
         $validationRules = [
-            'name'  => 'required',
-            'email' => 'required|email|unique:users,email',
+            'name'  => ['required'],
+            'email' => ['required', 'email', 'unique:users,email'],
         ];
 
         $authMethod = config('auth.method');
         $sendInvite = ($request->get('send_invite', 'false') === 'true');
 
         if ($authMethod === 'standard' && !$sendInvite) {
-            $validationRules['password'] = 'required|min:6';
-            $validationRules['password-confirm'] = 'required|same:password';
-        } elseif ($authMethod === 'ldap' || $authMethod === 'saml2') {
-            $validationRules['external_auth_id'] = 'required';
+            $validationRules['password'] = ['required', Password::default()];
+            $validationRules['password-confirm'] = ['required', 'same:password'];
+        } elseif ($authMethod === 'ldap' || $authMethod === 'saml2' || $authMethod === 'openid') {
+            $validationRules['external_auth_id'] = ['required'];
         }
         $this->validate($request, $validationRules);
 
@@ -93,25 +95,28 @@ class UserController extends Controller
 
         if ($authMethod === 'standard') {
             $user->password = bcrypt($request->get('password', Str::random(32)));
-        } elseif ($authMethod === 'ldap' || $authMethod === 'saml2') {
+        } elseif ($authMethod === 'ldap' || $authMethod === 'saml2' || $authMethod === 'openid') {
             $user->external_auth_id = $request->get('external_auth_id');
         }
 
         $user->refreshSlug();
-        $user->save();
 
-        if ($sendInvite) {
-            $this->inviteService->sendInvitation($user);
-        }
+        DB::transaction(function () use ($user, $sendInvite, $request) {
+            $user->save();
 
-        if ($request->filled('roles')) {
-            $roles = $request->get('roles');
-            $this->userRepo->setUserRoles($user, $roles);
-        }
+            if ($sendInvite) {
+                $this->inviteService->sendInvitation($user);
+            }
 
-        $this->userRepo->downloadAndAssignUserAvatar($user);
+            if ($request->filled('roles')) {
+                $roles = $request->get('roles');
+                $this->userRepo->setUserRoles($user, $roles);
+            }
 
-        $this->logActivity(ActivityType::USER_CREATE, $user);
+            $this->userRepo->downloadAndAssignUserAvatar($user);
+
+            $this->logActivity(ActivityType::USER_CREATE, $user);
+        });
 
         return redirect('/settings/users');
     }
@@ -155,12 +160,12 @@ class UserController extends Controller
         $this->checkPermissionOrCurrentUser('users-manage', $id);
 
         $this->validate($request, [
-            'name'             => 'min:2',
-            'email'            => 'min:2|email|unique:users,email,' . $id,
-            'password'         => 'min:6|required_with:password_confirm',
-            'password-confirm' => 'same:password|required_with:password',
-            'setting'          => 'array',
-            'profile_image'    => 'nullable|' . $this->getImageValidationRules(),
+            'name'             => ['min:2'],
+            'email'            => ['min:2', 'email', 'unique:users,email,' . $id],
+            'password'         => ['required_with:password_confirm', Password::default()],
+            'password-confirm' => ['same:password', 'required_with:password'],
+            'setting'          => ['array'],
+            'profile_image'    => array_merge(['nullable'], $this->getImageValidationRules()),
         ]);
 
         $user = $this->userRepo->getById($id);

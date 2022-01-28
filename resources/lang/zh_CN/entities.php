@@ -143,6 +143,8 @@ return [
     'books_sort_chapters_last' => '章节倒序',
     'books_sort_show_other' => '显示其他图书',
     'books_sort_save' => '保存新顺序',
+    'books_copy' => '复制图书',
+    'books_copy_success' => '图书已成功复制',
 
     // Chapters
     'chapter' => '章节',
@@ -161,6 +163,8 @@ return [
     'chapters_move' => '移动章节',
     'chapters_move_named' => '移动章节「:chapterName」',
     'chapter_move_success' => '章节移动到「:bookName」',
+    'chapters_copy' => '复制章节',
+    'chapters_copy_success' => '章节已成功复制',
     'chapters_permissions' => '章节权限',
     'chapters_empty' => '本章目前没有页面。',
     'chapters_permissions_active' => '有效的章节权限',
@@ -234,6 +238,7 @@ return [
     'pages_initial_name' => '新页面',
     'pages_editing_draft_notification' => '您正在编辑在 :timeDiff 内保存的草稿.',
     'pages_draft_edited_notification' => '此后，此页面已经被更新，建议您放弃此草稿。',
+    'pages_draft_page_changed_since_creation' => '这个页面在您的草稿创建后被其他用户更新了，您目前的草稿不包含新的内容。建议您放弃此草稿，或是注意不要覆盖新的页面更改。',
     'pages_draft_edit_active' => [
         'start_a' => ':count位用户正在编辑此页面',
         'start_b' => '用户“:userName”已经开始编辑此页面',
@@ -253,10 +258,20 @@ return [
     'tag' => '标签',
     'tags' =>  '标签',
     'tag_name' =>  '标签名称',
-    'tag_value' => '标签值 (Optional)',
-    'tags_explain' => "添加一些标签以更好地对您的内容进行分类。\n您可以为标签分配一个值，以进行更深入的组织。",
+    'tag_value' => '标签值 (可选)',
+    'tags_explain' => "添加一些标签以更好地对您的内容进行分类。\n您可以为标签分配一个值，以进行更好的进行管理。",
     'tags_add' => '添加另一个标签',
     'tags_remove' => '删除此标签',
+    'tags_usages' => '标签总使用量',
+    'tags_assigned_pages' => '有这个标签的页面',
+    'tags_assigned_chapters' => '有这个标签的章节',
+    'tags_assigned_books' => '有这个标签的图书',
+    'tags_assigned_shelves' => '有这个标签的书架',
+    'tags_x_unique_values' => ':count 个不重复项目',
+    'tags_all_values' => '所有值',
+    'tags_view_tags' => '查看标签',
+    'tags_view_existing_tags' => '查看已有的标签',
+    'tags_list_empty_hint' => '您可以在页面编辑器的侧边栏添加标签，或者在编辑图书、章节、书架时添加。',
     'attachments' => '附件',
     'attachments_explain' => '上传一些文件或附加一些链接显示在您的网页上。这些在页面的侧边栏中可见。',
     'attachments_explain_instant_save' => '这里的更改将立即保存。',
@@ -320,5 +335,13 @@ return [
     'revision_delete_confirm' => '您确定要删除此修订版吗？',
     'revision_restore_confirm' => '您确定要恢复到此修订版吗？恢复后原有内容将会被替换。',
     'revision_delete_success' => '修订删除',
-    'revision_cannot_delete_latest' => '无法删除最新版本。'
+    'revision_cannot_delete_latest' => '无法删除最新版本。',
+
+    // Copy view
+    'copy_consider' => '复制内容时请注意以下事项。',
+    'copy_consider_permissions' => '自定义权限设置将不会被复制。',
+    'copy_consider_owner' => '您将成为所有已复制内容的所有者。',
+    'copy_consider_images' => '页面中的图像文件不会被复制，原始图像将保留它们与最初上传到的页面的关系。',
+    'copy_consider_attachments' => '页面中的附件不会被复制。',
+    'copy_consider_access' => '改变位置、所有者或权限可能会导致此内容被以前无法访问的人访问。',
 ];

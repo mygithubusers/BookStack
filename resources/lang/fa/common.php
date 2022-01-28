@@ -20,7 +20,7 @@ return [
     'role' => 'نقش',
     'cover_image' => 'تصویر روی جلد',
     'cover_image_description' => 'سایز تصویر باید 440x250 باشد.',
-    
+
     // Actions
     'actions' => 'عملیات',
     'view' => 'نمایش',
@@ -39,12 +39,14 @@ return [
     'reset' => 'بازنشانی',
     'remove' => 'حذف',
     'add' => 'ﺍﻓﺰﻭﺩﻥ',
-    'configure' => 'Configure',
+    'configure' => 'پیکربندی کنید',
     'fullscreen' => 'تمام صفحه',
     'favourite' => 'علاقه‌مندی',
     'unfavourite' => 'Unfavourite',
     'next' => 'بعدی',
     'previous' => 'قبلى',
+    'filter_active' => 'فیلتر فعال:',
+    'filter_clear' => 'پاک کردن فیلتر',
 
     // Sort Options
     'sort_options' => 'گزینه‌های مرتب سازی',
@@ -69,6 +71,10 @@ return [
     'list_view' => 'نمای لیست',
     'default' => 'پیش‎فرض',
     'breadcrumb' => 'مسیر جاری',
+    'status' => 'وضعیت',
+    'status_active' => 'فعال',
+    'status_inactive' => 'غیر فعال',
+    'never' => 'هرگز',
 
     // Header
     'header_menu_expand' => 'گسترش منو',

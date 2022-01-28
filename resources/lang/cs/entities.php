@@ -99,7 +99,7 @@ return [
     'shelves_permissions' => 'Oprávnění knihovny',
     'shelves_permissions_updated' => 'Oprávnění knihovny byla aktualizována',
     'shelves_permissions_active' => 'Oprávnění knihovny byla aktivována',
-    'shelves_permissions_cascade_warning' => 'Permissions on bookshelves do not automatically cascade to contained books. This is because a book can exist on multiple shelves. Permissions can however be copied down to child books using the option found below.',
+    'shelves_permissions_cascade_warning' => 'Oprávnění v Knihovnách nejsou automaticky kaskádována do obsažených knih. To proto, že kniha může existovat ve více Knihovnách. Oprávnění však lze zkopírovat do podřízených knih pomocí níže uvedené možnosti.',
     'shelves_copy_permissions_to_books' => 'Kopírovat oprávnění na knihy',
     'shelves_copy_permissions' => 'Kopírovat oprávnění',
     'shelves_copy_permissions_explain' => 'Toto použije aktuální nastavení oprávnění knihovny na všechny knihy v ní obsažené. Před aktivací se ujistěte, že byly uloženy všechny změny oprávnění této knihovny.',
@@ -143,6 +143,8 @@ return [
     'books_sort_chapters_last' => 'Kapitoly jako poslední',
     'books_sort_show_other' => 'Zobrazit ostatní knihy',
     'books_sort_save' => 'Uložit nové pořadí',
+    'books_copy' => 'Kopírovat knihu',
+    'books_copy_success' => 'Kniha byla úspěšně zkopírována',
 
     // Chapters
     'chapter' => 'Kapitola',
@@ -161,6 +163,8 @@ return [
     'chapters_move' => 'Přesunout kapitolu',
     'chapters_move_named' => 'Přesunout kapitolu :chapterName',
     'chapter_move_success' => 'Kapitola přesunuta do knihy :bookName',
+    'chapters_copy' => 'Kopírovat kapitolu',
+    'chapters_copy_success' => 'Kapitola byla úspěšně zkopírována',
     'chapters_permissions' => 'Oprávnění kapitoly',
     'chapters_empty' => 'Tato kapitola neobsahuje žádné stránky',
     'chapters_permissions_active' => 'Oprávnění kapitoly byla aktivována',
@@ -234,6 +238,7 @@ return [
     'pages_initial_name' => 'Nová stránka',
     'pages_editing_draft_notification' => 'Právě upravujete koncept, který byl uložen před :timeDiff.',
     'pages_draft_edited_notification' => 'Tato stránka se od té doby změnila. Je doporučeno aktuální koncept zahodit.',
+    'pages_draft_page_changed_since_creation' => 'Tato stránka byla aktualizována od vytvoření tohoto konceptu. Doporučuje se zrušit tento koncept nebo se postarat o to, abyste si nepřepsali žádné již zadané změny.',
     'pages_draft_edit_active' => [
         'start_a' => 'Uživatelé začali upravovat tuto stránku (celkem :count)',
         'start_b' => ':userName začal/a upravovat tuto stránku',
@@ -257,6 +262,16 @@ return [
     'tags_explain' => "Přidejte si štítky pro lepší kategorizaci knih. \n Štítky mohou nést i hodnotu pro detailnější klasifikaci.",
     'tags_add' => 'Přidat další štítek',
     'tags_remove' => 'Odstranit tento štítek',
+    'tags_usages' => 'Počet použití štítku',
+    'tags_assigned_pages' => 'Přiřazeno ke stránkám',
+    'tags_assigned_chapters' => 'Přiřazeno ke kapitolám',
+    'tags_assigned_books' => 'Přiřazeno ke knihám',
+    'tags_assigned_shelves' => 'Přiřazeno ke knihovnám',
+    'tags_x_unique_values' => ':count jedinečných hodnot',
+    'tags_all_values' => 'Všechny hodnoty',
+    'tags_view_tags' => 'Zobrazit štítky',
+    'tags_view_existing_tags' => 'Zobrazit existující štítky',
+    'tags_list_empty_hint' => 'Štítky mohou být přiřazeny pomocí postranního panelu editoru stránky nebo při úpravách podrobností knihy, kapitoly nebo knihovny.',
     'attachments' => 'Přílohy',
     'attachments_explain' => 'Nahrajte soubory nebo připojte odkazy, které se zobrazí na stránce. Budou k nalezení v postranní liště.',
     'attachments_explain_instant_save' => 'Změny zde provedené se okamžitě ukládají.',
@@ -320,5 +335,13 @@ return [
     'revision_delete_confirm' => 'Opravdu chcete odstranit tuto revizi?',
     'revision_restore_confirm' => 'Jste si jisti, že chcete obnovit tuto revizi? Aktuální obsah stránky bude nahrazen.',
     'revision_delete_success' => 'Revize odstraněna',
-    'revision_cannot_delete_latest' => 'Nelze odstranit poslední revizi.'
+    'revision_cannot_delete_latest' => 'Nelze odstranit poslední revizi.',
+
+    // Copy view
+    'copy_consider' => 'Please consider the below when copying content.',
+    'copy_consider_permissions' => 'Vlastní nastavení oprávnění nebudou zkopírovány.',
+    'copy_consider_owner' => 'Stanete se vlastníkem veškerého kopírovaného obsahu.',
+    'copy_consider_images' => 'Page image files will not be duplicated & the original images will retain their relation to the page they were originally uploaded to.',
+    'copy_consider_attachments' => 'Přílohy stránky nebudou zkopírovány.',
+    'copy_consider_access' => 'Po změně umístění, vlastníka nebo oprávnění může dojít k tomu, že obsah může být přístupný těm, kteří přístup dříve něměli.',
 ];
